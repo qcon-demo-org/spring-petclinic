@@ -23,10 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       - name: Set up JDK ${{matrix.java}}
-        uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf # v2.5.0
+        uses: step-security/harden-runner@int
         with:
-          java-version: ${{matrix.java}}
-          distribution: 'adopt'
-          cache: maven
-      - name: Build with Maven Wrapper
-        run: ./mvnw -B package
+          egress-policy: audit
+          
